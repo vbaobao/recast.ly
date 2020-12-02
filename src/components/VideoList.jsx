@@ -1,12 +1,19 @@
-var VideoList = () => (
+import videoListEntry from './VideoListEntry.js';
+
+var VideoList = (props) => (
+
+  // Iterate through the exampleVideoData 
+  // Output one videoListEntry per object
+  // To access video data: props.exampleVideoData (will give a list of obj)
   <div className="video-list">
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
+    <div><h5><em>videoListEntry</em>{props.exampleVideoData[0].snippet.title}</h5></div>
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
   </div>
 );
+
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
