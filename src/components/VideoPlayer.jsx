@@ -19,3 +19,23 @@ VideoPlayer.propTypes = {
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 export default VideoPlayer;
+
+
+
+// class RetiredForagerBee extends ForagerBee {
+//   constructor() {
+//     super();
+//     this.age = 40;
+//     this.job = 'gamble';
+//     this.canFly = false;
+//     this.color = 'grey';
+//   }
+
+//   forage() {
+//     return 'I am too old, let me play cards instead';
+//   }
+
+//   gamble(treasure) {
+//     this.treasureChest.push(treasure);
+//   }
+// };

@@ -11,6 +11,18 @@ class App extends React.Component {
       videoList: exampleVideoData, //videoID as identifier
       currentVideo: exampleVideoData[0]
     };
+    this.changeVideoOnClick = this.changeVideoOnClick.bind(this);
+  }
+
+  // function changeVideoOnClick() {
+
+  //   return xx
+  // }
+
+  changeVideoOnClick() {
+    console.log('hello');
+    console.log(this);
+    this.setState({ currentVideo: this });
   }
   
   render() {
@@ -23,10 +35,10 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><VideoPlayer video={this.props.currentVideo} /></div>
+            <div><VideoPlayer video={this.state.currentVideo} /></div>
           </div>
           <div className="col-md-5">
-            <div><VideoList videos={this.props.videoList} /></div>
+            <div><VideoList videos={this.state.videoList} changeVideo={this.changeVideoOnClick} /></div>
           </div>
         </div>
       </div>
