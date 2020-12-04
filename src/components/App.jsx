@@ -19,14 +19,12 @@ class App extends React.Component {
   //   return xx
   // }
 
-  changeVideoOnClick() {
-    console.log('hello');
-    console.log(this);
+  changeVideoOnClick(videoObj) {
     // Find the video object that was clicked
     // 
     // Set it to current video
-
-    this.setState({ currentVideo: this });
+    console.log(videoObj);
+    this.setState({ currentVideo: videoObj });
   }
   
   render() {
