@@ -2,31 +2,35 @@ import exampleVideoData from '../data/exampleVideoData.js';
 import Search from './Search.js';
 import VideoPlayer from './VideoPlayer.js';
 import VideoList from './VideoList.js';
-
+import searchYouTube from '../lib/searchYouTube.js';
+import YOUTUBE_API_KEY from '../config/youtube.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoList: exampleVideoData, //videoID as identifier
-      currentVideo: exampleVideoData[0]
+      videoList: [],
+      currentVideo: {}
     };
     this.changeVideoOnClick = this.changeVideoOnClick.bind(this);
   }
 
-  // function changeVideoOnClick() {
-
-  //   return xx
-  // }
-
   changeVideoOnClick(videoObj) {
-    // Find the video object that was clicked
-    // 
-    // Set it to current video
-    console.log(videoObj);
     this.setState({ currentVideo: videoObj });
   }
   
+  componentDidMount() {
+    console.log("Hello");
+    var option = { key: YOUTUBE_API_KEY };
+    var callback = function(data) {
+      this.setState({
+        videoList: data,
+        currentVideo: data[0]
+      });
+    };
+    searchYouTube(option, callback);
+  }
+
   render() {
     return (
       <div>
