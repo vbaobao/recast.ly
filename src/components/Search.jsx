@@ -10,3 +10,8 @@ var Search = () => (
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
 export default Search;
+
+// In app.jsx -> handleChange + debounce_ver = _.debounce(handleChange, 500)
+// onChange={this.debounce_ver}
+// <input onchange={event => setTitle(event.target.value)} />
+// handleChange() => {searchYouTube(new search term)}

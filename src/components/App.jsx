@@ -20,7 +20,6 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    console.log("Hello");
     var option = { key: YOUTUBE_API_KEY };
     var callback = function(data) {
       this.setState({
@@ -28,7 +27,7 @@ class App extends React.Component {
         currentVideo: data[0]
       });
     };
-    searchYouTube(option, callback);
+    searchYouTube(option, callback.bind(this));
   }
 
   render() {
