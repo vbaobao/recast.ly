@@ -1,6 +1,6 @@
-var Search = () => (
+var Search = (props) => (
   <div className="search-bar form-inline">
-    <input className="form-control" type="text" />
+    <input className="form-control" type="text" onChange={e => props.handleSearch(e.target.value)} />
     <button className="btn hidden-sm-down">
       <span className="glyphicon glyphicon-search"></span>
     </button>
@@ -11,7 +11,5 @@ var Search = () => (
 // `var` declarations will only exist globally where explicitly defined
 export default Search;
 
-// In app.jsx -> handleChange + debounce_ver = _.debounce(handleChange, 500)
-// onChange={this.debounce_ver}
-// <input onchange={event => setTitle(event.target.value)} />
-// handleChange() => {searchYouTube(new search term)}
+
+//e => props.handleSearch(e.target.value)

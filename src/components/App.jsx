@@ -12,21 +12,36 @@ class App extends React.Component {
       currentVideo: {}
     };
     this.changeVideoOnClick = this.changeVideoOnClick.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    //this.debounceHandleSearch = this.debounceHandleSearch.bind(this);
+    this.options = { key: YOUTUBE_API_KEY };
   }
 
   changeVideoOnClick(videoObj) {
     this.setState({ currentVideo: videoObj });
   }
+
+  handleSearch(value) {
+    // on change in input
+    // make a call to this.props.searchYouTube
+    // pass the value into options
+    // apply debounce
+    console.log(value);    
+    this.options.query = value; 
+    console.log(this.options.query);
+    this.props.searchYouTube(this.options, this.updatePageData.bind(this));
+
+  }
+
+  updatePageData(data) {
+    this.setState({
+      videoList: data,
+      currentVideo: data[0]
+    });
+  }
   
   componentDidMount() {
-    var option = { key: YOUTUBE_API_KEY };
-    var callback = function(data) {
-      this.setState({
-        videoList: data,
-        currentVideo: data[0]
-      });
-    };
-    this.props.searchYouTube(option, callback.bind(this));
+    this.props.searchYouTube(this.options, this.updatePageData.bind(this));
   }
 
   render() {
@@ -34,7 +49,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><Search /></div>
+            <div><Search options={this.options} handleSearch={ _.debounce((value) => this.handleSearch(value), 500, {leading: true}) } /></div>
           </div>
         </nav>
         <div className="row">
