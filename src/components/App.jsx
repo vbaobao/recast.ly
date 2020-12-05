@@ -2,7 +2,6 @@ import exampleVideoData from '../data/exampleVideoData.js';
 import Search from './Search.js';
 import VideoPlayer from './VideoPlayer.js';
 import VideoList from './VideoList.js';
-import searchYouTube from '../lib/searchYouTube.js';
 import YOUTUBE_API_KEY from '../config/youtube.js';
 
 class App extends React.Component {
@@ -27,7 +26,7 @@ class App extends React.Component {
         currentVideo: data[0]
       });
     };
-    searchYouTube(option, callback.bind(this));
+    this.props.searchYouTube(option, callback.bind(this));
   }
 
   render() {
